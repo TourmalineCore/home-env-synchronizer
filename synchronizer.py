@@ -8,7 +8,7 @@ if (os.getenv("SYNCHRONIZER_ENABLED") == "true"):
 
     subprocess.run(['helmfile', 'cache', 'cleanup'], check = True)
 
-    subprocess.run(['helmfile', '--environment', f'{os.getenv("NAMESPACE")}', '--namespace', f'{os.getenv("NAMESPACE")}', '-f', f'{os.getenv("PATH_TO_HELMFILE")}', 'apply'], check = True)
+    subprocess.run(['helmfile', '--environment', f'{os.getenv("NAMESPACE")}', '--namespace', f'{os.getenv("NAMESPACE")}', '-f', f'{os.getenv("PATH_TO_HELMFILE")}', 'apply', '--concurrency', '1'], check = True)
 
 else:
     print("SYNCHRONIZER IS DISABLED")
